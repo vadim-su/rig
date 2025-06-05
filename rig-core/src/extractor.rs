@@ -146,6 +146,11 @@ impl<T: JsonSchema + for<'a> Deserialize<'a> + Serialize + Send + Sync, M: Compl
         self
     }
 
+    pub fn max_tokens(mut self, max_tokens: u64) -> Self {
+        self.agent_builder = self.agent_builder.max_tokens(max_tokens);
+        self
+    }
+
     pub fn additional_params(mut self, params: serde_json::Value) -> Self {
         self.agent_builder = self.agent_builder.additional_params(params);
         self
